@@ -3,6 +3,7 @@ from pygame.locals import *
 
 from OpenGL.GL import *
 from OpenGL.GLU import *
+from OpenGL.GLUT import *
 
 
 cubeEdges = ((0,1),(0,3),(0,4),(1,2),(1,7),(2,5),(2,3),(3,6),(4,6),(4,7),(5,6),(5,7))
@@ -76,6 +77,7 @@ def initGL(screenResolution):
     glLightfv(GL_LIGHT0, GL_SPECULAR, [0.8, 0.8, 0.8, 0])
 #
 #
+
 
 def main():
     pygame.init()
