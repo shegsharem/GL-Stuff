@@ -86,9 +86,6 @@ def main():
 
     # Transformation matrix, ExT where T is the transformation and E is the original location
     # (x,y,z)
-
-    
-    
     glTranslatef(0.0, 0.0, -10)
 
     while True:
