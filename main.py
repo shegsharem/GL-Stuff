@@ -46,19 +46,20 @@ def getScreenData():
 
 def initGL(screenResolution):
     gluPerspective(45, (screenResolution[0]/screenResolution[1]), 0.1, 50.0)
-    # Black background
+    # Background Color 0-1 where 1 is the maximum color
     glClearColor (0.0, 0.0, 0.0, 0.5);
     # Depth buffer setup
     #glClearDepth (1.0);
     ## Type of depth test
     #glDepthFunc(GL_LEQUAL)
     ## Smooth shading
-    #glShadeModel(GL_SMOOTH)
+    glShadeModel(GL_SMOOTH)
 #
-    #glEnable(GL_LIGHTING)
-    #glEnable(GL_LIGHT0)
-    #glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST)
-    #glEnable( GL_POLYGON_SMOOTH )
+    glEnable(GL_LIGHTING)
+    glEnable(GL_LIGHT0)
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST)
+    glEnable( GL_POLYGON_SMOOTH )
+    glEnable(GL_TEXTURE_2D)
 #
     #glEnable(GL_COLOR_MATERIAL);        
     #glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, [0.7, 0.7, 0.7, 0])
@@ -67,11 +68,12 @@ def initGL(screenResolution):
     #glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, 30)
     #glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE); 
 #
-    #glLightModeli( GL_LIGHT_MODEL_COLOR_CONTROL, GL_SEPARATE_SPECULAR_COLOR );
-    #glLightfv(GL_LIGHT0, GL_POSITION, [0.85, 0.8, 0.75, 0])
-    #glLightfv(GL_LIGHT0, GL_AMBIENT, [0.8, 0.8, 0.7, 0])
-    #glLightfv(GL_LIGHT0, GL_DIFFUSE, [0.7, 0.7, 0.7, 0])
-    #glLightfv(GL_LIGHT0, GL_SPECULAR, [0.8, 0.8, 0.8, 0])
+    glLightModeli( GL_LIGHT_MODEL_COLOR_CONTROL, GL_SEPARATE_SPECULAR_COLOR );
+    #glLightfv(GL_LIGHT0, GL_POSITION, [0.85, 0.8, 0.75, 0.1])
+    glLightfv(GL_LIGHT0, GL_POSITION, [10, 5, 1, -1])
+    glLightfv(GL_LIGHT0, GL_AMBIENT, [0.8, 0.8, 0.7, 0])
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, [0.7, 0.7, 0.7, 0])
+    glLightfv(GL_LIGHT0, GL_SPECULAR, [0.8, 0.8, 0.8, 0])
 #
 #
 
@@ -87,6 +89,7 @@ def main():
     # Transformation matrix, ExT where T is the transformation and E is the original location
     # (x,y,z)
     glTranslatef(0.0, 0.0, -10)
+    glRotatef(20, -1, -1, -1)
 
     while True:
         for event in pygame.event.get():
@@ -102,7 +105,7 @@ def main():
                 
         
         # Center of rotation vertex (angle of rotation,x,y,z)
-        glRotatef(0.1, -1, -1, -1)
+        glRotatef(0.3, -1, -1, -1)
         
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
         #solidCube()
